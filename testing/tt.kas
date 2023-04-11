@@ -1,0 +1,7 @@
+%define exit_code 0xbeef
+%define syscall int 0x80
+
+_start:
+    movw eax exit_code
+    movw ebx 0x0
+    syscall
