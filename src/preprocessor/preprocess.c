@@ -111,6 +111,8 @@ char *preprocess(char *src_contents) {
 
     char *preprocessed_source = (char*)malloc(sizeof(char)*2000);
 
+    preprocessed_source[0] = '\0';
+
     strcat(preprocessed_source, "\n");
 
     for (int i = 0; src_contents[i] != '\0'; i++) {

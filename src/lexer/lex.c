@@ -14,6 +14,7 @@ token_t get_register(char *ident) {
 
 
     tok.base = malloc(sizeof(char)*200);
+    *tok.base = '\0';
     
 
     strcpy(tok.base, get_token_base_list()[8]);
@@ -85,11 +86,8 @@ token_t get_register(char *ident) {
 token_t get_token(char *ident) {
     token_t tok;
 
-    if (strcmp(ident, "ah") == 0 || strcmp(ident, "al") == 0 || strcmp(ident, "bh") == 0 || strcmp(ident, "bl") == 0 || strcmp(ident, "ch") == 0 || strcmp(ident, "cl") == 0 || strcmp(ident, "dh") == 0 || strcmp(ident, "dl") == 0 || 
-        strcmp(ident, "ax") == 0 || strcmp(ident, "bx") == 0 || strcmp(ident, "cx") == 0 || strcmp(ident, "dx") == 0 || 
-        strcmp(ident, "eax") == 0 || strcmp(ident, "ebx") == 0 || strcmp(ident, "ecx") == 0 || strcmp(ident, "edx") == 0 ||
-        strcmp(ident, "esi") == 0 || strcmp(ident, "edi") == 0 || strcmp(ident, "ebp") == 0 || strcmp(ident, "esp") == 0 ) {
-
+    if (ident[0] == '$') {
+        ident++;
         tok = get_register(ident);
     } else if (strcmp(ident, "jmp") == 0) {
         tok.base = get_token_base_list()[0];

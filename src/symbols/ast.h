@@ -9,3 +9,4 @@ typedef struct _Node {
 }node_t;
 
 void add_child(node_t *node, node_t *node_to_add, int index);
+void free_node(node_t *node);

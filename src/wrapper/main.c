@@ -4,6 +4,7 @@
 #include "../preprocessor/preprocess.h"
 #include "../lexer/lex.h"
 #include "../parser/parse.h"
+#include "../compiler/compile.h"
 #include "../symbols/tokens.h"
 #include "../symbols/ast.h"
 
@@ -66,13 +67,18 @@ int main(int argc, char *argv[]) {
     }
     
     printf("\n");
-    
-    node_t ast = parse(tokens);
 
+    
+    node_t *ast = parse(tokens);
 
     free(tokens);
 
+
+    compile(ast, out);
+
     fclose(out);
+
+    free_node(ast);
 
     return 0;
 }
